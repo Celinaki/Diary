@@ -2,6 +2,7 @@
 import EntryCard from '../components/icons/EntryCard.vue';
 import Pagination from '../components/icons/Pagination.vue'
 import CreateEntryButton from '../components/CreateEntryButton.vue'
+import CreateEntryModal from '../components/CreateEntryModal.vue'
 </script>
 
 <template>
@@ -24,6 +25,7 @@ import CreateEntryButton from '../components/CreateEntryButton.vue'
         <Pagination/>
     </div>
     <CreateEntryButton/>
+    <CreateEntryModal/>
 </template>
 
 <style scoped>
