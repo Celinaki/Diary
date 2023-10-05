@@ -4,7 +4,7 @@ import {storeToRefs} from 'pinia'
 const store = useDeleteEntryStore()
 const { deleteEntryModal } = storeToRefs(store)
 
- const props = defineProps(['entryDate','entryText'])
+ const props = defineProps(['entryDate','entryText','id'])
 
 
 const openModal = () => {
@@ -16,7 +16,6 @@ const openModal = () => {
 <template>
     <div class="entry-wrapper">
         <span class="first-row">
-           
             <h2> {{ entryDate }}</h2>
             <img src="@/assets/clarity_trash-line.svg" @click="openModal" alt="">
         </span>

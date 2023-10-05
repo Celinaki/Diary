@@ -57,6 +57,8 @@ const onSelectChange = () => {
             <EntryCard v-for="entry in allEntries"
                    :entryDate="entry.date"
                    :entryText="entry.entry"
+                   :entryId="entry.id"
+                   :key="entry.id"
             />
         </div>
         <Pagination/>
