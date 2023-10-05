@@ -34,18 +34,23 @@ onUnmounted(() => {
 </script>
 
 <template >
-    <div ref="modalbody">
+    <div class="modal-body" ref="modalbody">
         <section ref="modal">
+            <div class="first-row">
+                <img src="@/assets/warning.svg" alt="">
+
+                <h2>Are you sure you want to permanently delete this entry?</h2>
+            </div>
                 <span>
-                    <button class="not-filled-button" @click="closeModal">Cancel</button>
-                    <button>Done</button>            
+                    <button class="not-filled-button" @click="closeModal">CANCEL</button>
+                    <button>CONFIRM</button>            
                 </span>
             </section>
     </div>
 </template>
 
 <style scoped>
-div{
+.modal-body{
     width: 100%;
     height: 100%;
     position: fixed;
@@ -60,10 +65,16 @@ section{
     background-color: rgb(255, 255, 255);
     z-index: 2;
     width: 85%;
-    height: 70vh;
+    height: fit-content;
     border-radius: 4px;
-    padding: 1rem;
     box-sizing: border-box;
+}
+.first-row{
+display: flex;
+padding: 1rem;
+justify-content: center;
+gap: 1rem;
+
 }
 
 span{
@@ -72,18 +83,26 @@ span{
     gap: 9px;
     display: flex;
     justify-content: flex-end;
+    background-color: #F1F1F1;
+    padding: 1rem;
+
 }
 button{
     border-radius: 25px;
-    border: 1px solid #C3F1FB;
-    background: rgba(175, 241, 255, 0.90);
+    border: 1px solid #F32626;
     display: inline-flex;
     padding: 6px 14px;
     justify-content: center;
     align-items: center;
+    background: #F32626;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
     
 }
 .not-filled-button{
     background:#fff;
+    border: 1px solid black;
+    color: black;
 }
 </style>
