@@ -5,17 +5,19 @@ import { ref, computed } from 'vue'
 export const useEntriesStore = defineStore('entriesStore',() =>  {
 
     let allEntries = ref([])
+
 //Initial value of array
     const setAllEntries = (array) => {
         allEntries.value=array
+        
     }
 //Initial value of array
 
 //Push in new entry
 const addNewEntry = (object)=>{
-    let newEntry=ref(object.value)
-    console.log("prova", object.value, newEntry)
-    allEntries.value.push(object.value)
+    // let newEntry=ref(object)
+    console.log("ett object", object)
+    allEntries.value.push(object)
 
 }
 //Push in new entry
@@ -31,9 +33,11 @@ const getId=(id)=>{
     permDelete.value=false
 }
 const deleteEntry=()=>{
-    const newArray = allEntries.value.filter(entry=> entry.id !==varId.value)
+    console.log(allEntries.value)
+    const newArray = allEntries.value.filter((entry) => entry.id !==varId.value)
     allEntries.value=newArray;
     console.log(newArray,varId.value)
+    permDelete.value = false
 }
 
 
@@ -53,7 +57,7 @@ const deleteEntry=()=>{
                 }
                 return 0
             })
-            return allEntries=currentArray
+            allEntries.value=currentArray
         }
         else if(sortby==='oldest'){
             currentArray.sort((a,b) =>{
@@ -67,7 +71,7 @@ const deleteEntry=()=>{
                 }
                 return 0
             })
-            return allEntries=currentArray
+            allEntries.value=currentArray
         }
     }
 //Sort by date
