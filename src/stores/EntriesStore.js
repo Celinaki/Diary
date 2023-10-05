@@ -4,12 +4,22 @@ import { ref, computed } from 'vue'
 
 export const useEntriesStore = defineStore('entriesStore',() =>  {
 
-    const allEntries = ref([])
+    let allEntries = ref([])
 //Initial value of array
     const setAllEntries = (array) => {
         allEntries.value=array
     }
 //Initial value of array
+
+//Push in new entry
+const addNewEntry = (object)=>{
+    let newEntry=ref(object.value)
+    console.log("prova", object.value, newEntry)
+    allEntries.value.push(object.value)
+
+}
+//Push in new entry
+
 
 
 //Sort by date
@@ -48,7 +58,7 @@ export const useEntriesStore = defineStore('entriesStore',() =>  {
 
 
     return {
-        allEntries, setAllEntries, sortEntries
+        allEntries, setAllEntries, sortEntries, addNewEntry
     }
  
 })
