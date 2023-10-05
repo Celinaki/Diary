@@ -11,7 +11,6 @@ const modal = ref(null)
 const modalbody = ref(null)
 const store = useDeleteEntryStore()
 const entriesStore = useEntriesStore()
-const { permDelete } = storeToRefs(entriesStore)
 
 const closeModal = () => {
 //   emit('close'); 
@@ -34,6 +33,10 @@ onUnmounted(() => {
     })
 })
 
+const confirmDelete =()=>{
+entriesStore.changeDeleteState()
+entriesStore.deleteEntry()
+}
 
 </script>
 
@@ -47,7 +50,7 @@ onUnmounted(() => {
             </div>
                 <span>
                     <button class="not-filled-button" @click="closeModal">CANCEL</button>
-                    <button @click="permDelete=true">CONFIRM</button>            
+                    <button @click="confirmDelete">CONFIRM</button>            
                 </span>
             </section>
     </div>
