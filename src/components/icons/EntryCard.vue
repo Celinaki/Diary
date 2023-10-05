@@ -1,11 +1,21 @@
 <script setup>
+import { useDeleteEntryStore } from '@/stores/DeleteEntryStore';
+import {storeToRefs} from 'pinia'
+const store = useDeleteEntryStore()
+const { deleteEntryModal } = storeToRefs(store)
+
+
+const openModal = () => {
+    console.log("hej här", deleteEntryModal.value)
+    deleteEntryModal.value = true;
+}
 </script>
 
 <template>
     <div class="entry-wrapper">
         <span class="first-row">
             <h2>Date</h2>
-            <img src="@/assets/clarity_trash-line.svg" alt="">
+            <img src="@/assets/clarity_trash-line.svg" @click="openModal" alt="">
         </span>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta adipisci eveniet reiciendis nihil officia quisquam vel accusantium impedit natus eaque.</p>
     </div>
