@@ -1,36 +1,55 @@
 <script setup>
-import {ref} from 'vue'
+import {ref, defineProps, defineEmits, onMounted, onUnmounted} from 'vue'
 
 const remainingChars = ref(500);
 const entry = ref("");
-
+const { modalClosed } = defineProps(['modalClosed']);
+const emit = defineEmits(['close']);
+const modal = ref(null)
+const modalbody = ref(null)
 const countdown = () => {
     remainingChars.value = 500 - entry.value.length;
 }
+const closeModal = () => {
+  emit('close'); 
+};
+
+onMounted(() => {
+    window.addEventListener('click', (event) =>{
+        if(event.target.contains(modal.value)) {
+            emit('close'); 
+        }
+    })
+})
+
+onUnmounted(() => {
+    window.removeEventListener('click', (event) =>{
+        if(event.target.contains(modal.value)){
+            emit('close'); 
+        }
+    })
+})
 
 
 </script>
 
-<template>
-    <div>
-        <section>
+<template >
+    <div ref="modalbody">
+        <section ref="modal">
             <h2>Create a new entry</h2>
-            <form action="create">
+            <form action="create"  @submit.prevent  >
                 <textarea name="" 
                 id="" 
                 v-on:keyup="countdown"
                 v-model="entry" 
-                v-bind:maxlength="500">
-                
-               
-
+                v-bind:maxlength="500">     
+                               
             </textarea>
             <p class="chars-left" >{{ remainingChars }} chars left</p>
                 <span>
-                    <button class="not-filled-button">Cancel</button>
+                    <button class="not-filled-button" @click="closeModal">Cancel</button>
                     <button>Done</button>            
                 </span>
-
             </form>
         </section>
     </div>
