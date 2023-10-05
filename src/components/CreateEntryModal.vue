@@ -1,19 +1,24 @@
 <script setup>
 import {ref, defineProps, defineEmits, onMounted, onUnmounted} from 'vue'
 
-const remainingChars = ref(500);
-const entry = ref("");
 const { modalClosed } = defineProps(['modalClosed']);
 const emit = defineEmits(['close']);
 const modal = ref(null)
 const modalbody = ref(null)
+
+//Counting chars left
+const remainingChars = ref(500);
+const entry = ref("");
 const countdown = () => {
     remainingChars.value = 500 - entry.value.length;
 }
+//Counting chars left
+
 const closeModal = () => {
   emit('close'); 
 };
 
+//Logic for closing the modal on blur and onclick button
 onMounted(() => {
     window.addEventListener('click', (event) =>{
         if(event.target.contains(modal.value)) {
@@ -29,6 +34,7 @@ onUnmounted(() => {
         }
     })
 })
+//Logic for closing the modal on blur and onclick button
 
 
 </script>
