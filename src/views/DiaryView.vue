@@ -3,6 +3,10 @@ import EntryCard from '../components/icons/EntryCard.vue';
 import Pagination from '../components/icons/Pagination.vue'
 import CreateEntryButton from '../components/CreateEntryButton.vue'
 import CreateEntryModal from '../components/CreateEntryModal.vue'
+import {ref} from 'vue'
+
+const modalClosed = ref(false);
+
 </script>
 
 <template>
@@ -24,8 +28,8 @@ import CreateEntryModal from '../components/CreateEntryModal.vue'
         </div>
         <Pagination/>
     </div>
-    <CreateEntryButton/>
-    <CreateEntryModal/>
+    <CreateEntryButton @openModal="modalClosed = true"/>
+    <CreateEntryModal v-if="modalClosed" @close="modalClosed = false" />
 </template>
 
 <style scoped>
