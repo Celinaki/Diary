@@ -5,19 +5,39 @@ import { ref, computed } from 'vue'
 export const useEntriesStore = defineStore('entriesStore',() =>  {
 
     let allEntries = ref([])
+    let page = ref(1);
+    
+    const currentEntries = computed(() => {
+        return allEntries.value.slice(((page.value - 1) * 5), (page.value * 5));
+    })
 
 //Initial value of array
     const setAllEntries = (array) => {
         allEntries.value=array
         
     }
+
+    const handlePage = (num) => {
+        if (page.value+num <= 0) {
+            return;
+        } 
+
+        if(page.value+num >= (allEntries.value.length/3)-1) {
+            return;
+        }
+
+        page.value+=num;
+    }
 //Initial value of array
+
+const sortVal = ref('')
 
 //Push in new entry
 const addNewEntry = (object)=>{
     // let newEntry=ref(object)
     console.log("ett object", object)
     allEntries.value.push(object)
+    sortEntries(sortVal.value)
 
 }
 //Push in new entry
@@ -41,9 +61,9 @@ const deleteEntry=()=>{
 }
 
 
-
 //Sort by date
     const sortEntries = (sortby) =>{
+        sortVal.value = sortby
         const currentArray = allEntries.value
         if(sortby==='newest'){
             currentArray.sort((a,b) =>{
@@ -78,6 +98,8 @@ const deleteEntry=()=>{
 
 
     return {
+        handlePage,
+        currentEntries,
         allEntries,
         setAllEntries, 
         sortEntries, 
