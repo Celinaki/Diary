@@ -44,6 +44,8 @@ const onSelectChange = () => {
             v-model="selectedValue"
             @change="onSelectChange"
             id="sort-by">
+            <option value="" disabled selected hidden>Date</option>
+
                 <option value="newest"
                 > Newest</option>
                 <option value="oldest" 
