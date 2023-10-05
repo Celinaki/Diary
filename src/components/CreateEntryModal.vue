@@ -1,14 +1,23 @@
 <script setup>
-import {ref, defineProps, defineEmits, onMounted, onUnmounted} from 'vue'
+import {ref, defineProps, defineEmits, onMounted, onUnmounted, computed} from 'vue'
+import { useEntriesStore } from '@/stores/EntriesStore';
+import {storeToRefs} from 'pinia'
 
 const { modalClosed } = defineProps(['modalClosed']);
 const emit = defineEmits(['close']);
 const modal = ref(null)
 const modalbody = ref(null)
 
+const entriesStore = useEntriesStore()
+
+const newEntry = ref({})
+const newDate = ref('')
+
+const entry = ref("");
+
+
 //Counting chars left
 const remainingChars = ref(500);
-const entry = ref("");
 const countdown = () => {
     remainingChars.value = 500 - entry.value.length;
 }
@@ -36,6 +45,25 @@ onUnmounted(() => {
 })
 //Logic for closing the modal on blur and onclick button
 
+const today = new Date()
+const formattedDate = computed(()=>{
+const day = today.getDate();
+const month = today.getMonth()+1;
+const year = today.getFullYear();
+ const fullDate = year + "-" + month + "-" + day;
+ return fullDate
+ })
+//Add current entry to store
+const sendToStore = ()=>{
+    newEntry.value={
+        date: formattedDate,
+        entry:entry.value
+    }
+    entriesStore.addNewEntry(newEntry)
+    closeModal()
+}
+//Add current entry to store
+
 
 </script>
 
@@ -54,7 +82,7 @@ onUnmounted(() => {
             <p class="chars-left" >{{ remainingChars }} chars left</p>
                 <span>
                     <button class="not-filled-button" @click="closeModal">Cancel</button>
-                    <button>Done</button>            
+                    <button @click="sendToStore"  form="create">Done</button>            
                 </span>
             </form>
         </section>
