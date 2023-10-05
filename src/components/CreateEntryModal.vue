@@ -55,7 +55,9 @@ const year = today.getFullYear();
  })
 //Add current entry to store
 const sendToStore = ()=>{
+    let randomId = Math.floor((Math.random() * 10000) + 1);
     newEntry.value={
+        id:randomId,
         date: formattedDate,
         entry:entry.value
     }
