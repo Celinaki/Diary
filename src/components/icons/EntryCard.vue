@@ -1,15 +1,19 @@
 <script setup>
 import { useDeleteEntryStore } from '@/stores/DeleteEntryStore';
 import {storeToRefs} from 'pinia'
+import { useEntriesStore } from '@/stores/EntriesStore';
+import {ref} from 'vue'
+
+const props = defineProps(['entryDate','entryText','entryId'])
 const store = useDeleteEntryStore()
 const { deleteEntryModal } = storeToRefs(store)
+const entriesStore = useEntriesStore()
 
- const props = defineProps(['entryDate','entryText','id'])
-
-
+const passedId = ref(props.entryId)
 const openModal = () => {
     console.log("hej här", deleteEntryModal.value)
     deleteEntryModal.value = true;
+    entriesStore.getId(passedId.value)
 }
 </script>
 
@@ -17,7 +21,10 @@ const openModal = () => {
     <div class="entry-wrapper">
         <span class="first-row">
             <h2> {{ entryDate }}</h2>
-            <img src="@/assets/clarity_trash-line.svg" @click="openModal" alt="">
+            <img src="@/assets/clarity_trash-line.svg" 
+            @click="openModal" 
+            
+            alt="Trashcan icon">
         </span>
   <p>{{ entryText }}</p>
     </div>
