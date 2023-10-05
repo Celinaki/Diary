@@ -6,13 +6,19 @@ import CreateEntryModal from '../components/CreateEntryModal.vue'
 import DeleteEntryModal from '../components/DeleteEntryModal.vue'
 import {ref, onMounted} from 'vue'
 import { useDeleteEntryStore } from '@/stores/DeleteEntryStore';
+import { useEntriesStore } from '@/stores/EntriesStore';
 
 import {storeToRefs} from 'pinia'
 
 const modalClosed = ref(false);
-const store = useDeleteEntryStore()
-const { deleteEntryModal } = storeToRefs(store)
+//Delete modal things
+const deleteModalstore = useDeleteEntryStore()
+const { deleteEntryModal } = storeToRefs(deleteModalstore)
 const deleteModalOpen = ref(deleteEntryModal);
+//Delete modal things
+const entriesStore = useEntriesStore()
+const { allEntries } = storeToRefs(entriesStore)
+
 
 
 </script>
@@ -28,11 +34,10 @@ const deleteModalOpen = ref(deleteEntryModal);
             </select>
         </section>
         <div class="entries-wrapper">
-            <EntryCard/>
-            <EntryCard/>
-            <EntryCard/>
-            <EntryCard/>
-            <EntryCard/>
+            <EntryCard v-for="entry in allEntries"
+                   :entryDate="entry.date"
+                   :entryText="entry.entry"
+            />
         </div>
         <Pagination/>
     </div>
