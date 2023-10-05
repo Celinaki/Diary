@@ -3,9 +3,17 @@ import EntryCard from '../components/icons/EntryCard.vue';
 import Pagination from '../components/icons/Pagination.vue'
 import CreateEntryButton from '../components/CreateEntryButton.vue'
 import CreateEntryModal from '../components/CreateEntryModal.vue'
-import {ref} from 'vue'
+import DeleteEntryModal from '../components/DeleteEntryModal.vue'
+import {ref, onMounted} from 'vue'
+import { useDeleteEntryStore } from '@/stores/DeleteEntryStore';
+
+import {storeToRefs} from 'pinia'
 
 const modalClosed = ref(false);
+const store = useDeleteEntryStore()
+const { deleteEntryModal } = storeToRefs(store)
+const deleteModalOpen = ref(deleteEntryModal);
+
 
 </script>
 
@@ -30,6 +38,7 @@ const modalClosed = ref(false);
     </div>
     <CreateEntryButton @openModal="modalClosed = true"/>
     <CreateEntryModal v-if="modalClosed" @close="modalClosed = false" />
+    <DeleteEntryModal v-if="deleteModalOpen" />
 </template>
 
 <style scoped>
