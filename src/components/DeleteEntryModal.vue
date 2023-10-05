@@ -1,6 +1,8 @@
 <script setup>
 import {ref, defineProps, defineEmits, onMounted, onUnmounted} from 'vue'
 import { useDeleteEntryStore } from '../stores/DeleteEntryStore';
+import { useEntriesStore } from '@/stores/EntriesStore';
+import {storeToRefs} from 'pinia'
 
 
 const { modalClosed } = defineProps(['modalClosed']);
@@ -8,6 +10,8 @@ const emit = defineEmits(['close']);
 const modal = ref(null)
 const modalbody = ref(null)
 const store = useDeleteEntryStore()
+const entriesStore = useEntriesStore()
+const { permDelete } = storeToRefs(entriesStore)
 
 const closeModal = () => {
 //   emit('close'); 
@@ -43,7 +47,7 @@ onUnmounted(() => {
             </div>
                 <span>
                     <button class="not-filled-button" @click="closeModal">CANCEL</button>
-                    <button>CONFIRM</button>            
+                    <button @click="permDelete=true">CONFIRM</button>            
                 </span>
             </section>
     </div>
