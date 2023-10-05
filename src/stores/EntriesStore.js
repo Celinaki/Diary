@@ -20,6 +20,22 @@ const addNewEntry = (object)=>{
 }
 //Push in new entry
 
+const permDelete = ref(false);
+let varId = ref(0)
+const changeDeleteState =()=>{
+    permDelete.value = true;
+}
+
+const getId=(id)=>{
+    varId.value=id;
+    permDelete.value=false
+}
+const deleteEntry=()=>{
+    const newArray = allEntries.value.filter(entry=> entry.id !==varId.value)
+    allEntries.value=newArray;
+    console.log(newArray,varId.value)
+}
+
 
 
 //Sort by date
@@ -58,7 +74,13 @@ const addNewEntry = (object)=>{
 
 
     return {
-        allEntries, setAllEntries, sortEntries, addNewEntry
+        allEntries,
+        setAllEntries, 
+        sortEntries, 
+        addNewEntry, 
+        deleteEntry,
+        getId,
+        changeDeleteState
     }
  
 })
