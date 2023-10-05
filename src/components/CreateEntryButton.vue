@@ -1,8 +1,15 @@
 <script>
+import { defineEmits } from 'vue';
+
+// const emit = defineEmits(['openModal']);
+
+// const openModal = () => {
+//   emit('openModal');
+// };
 </script>
 
 <template>
-    <div>
+    <div @click="$emit('openModal', true)">
         <h2>Create an entry</h2>
         <img src="@/assets/Edit.svg" alt="">
     </div>
