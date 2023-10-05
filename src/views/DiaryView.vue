@@ -11,13 +11,25 @@ import { useEntriesStore } from '@/stores/EntriesStore';
 import {storeToRefs} from 'pinia'
 
 const modalClosed = ref(false);
+
 //Delete modal things
 const deleteModalstore = useDeleteEntryStore()
 const { deleteEntryModal } = storeToRefs(deleteModalstore)
 const deleteModalOpen = ref(deleteEntryModal);
 //Delete modal things
+
+//Entries store
 const entriesStore = useEntriesStore()
 const { allEntries } = storeToRefs(entriesStore)
+// const {sortEntries} = storeToRefs(entriesStore)
+//Entries store
+
+
+const selectedValue = ref('')
+const onSelectChange = () => {
+  entriesStore.sortEntries(selectedValue.value);
+}
+
 
 
 
@@ -28,11 +40,17 @@ const { allEntries } = storeToRefs(entriesStore)
         <h1>Entries</h1>
         <section class="sortby-wrapper">
             <h2>Sort by: </h2>
-            <select name="" id="sort-by">
-                <option value="Newest">Newest</option>
-                <option value="Oldest">Oldest</option>
+            <select name="sort-selection" 
+            v-model="selectedValue"
+            @change="onSelectChange"
+            id="sort-by">
+                <option value="newest"
+                > Newest</option>
+                <option value="oldest" 
+                >Oldest</option>
             </select>
         </section>
+
         <div class="entries-wrapper">
             <EntryCard v-for="entry in allEntries"
                    :entryDate="entry.date"
