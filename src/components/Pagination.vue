@@ -1,18 +1,22 @@
-<script>
+<script setup>
+import { useEntriesStore } from '@/stores/EntriesStore';
+
+
+let store = useEntriesStore();
 
 </script>
 
 <template>
     <div>
-        <span>
+        <span @click="store.handlePage(-1)" >
            &lt;
         </span>
-        <span>1</span>
+        <!-- <span>1</span>
         <span>2</span>
         <span>3</span>
         <span>4</span>
-        <span>5</span>
-        <span>></span>
+        <span>5</span> -->
+        <span @click="store.handlePage(1)">></span>
     </div>
 </template>
 
