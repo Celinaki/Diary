@@ -9,6 +9,7 @@ import { useDeleteEntryStore } from '@/stores/DeleteEntryStore';
 import { useEntriesStore } from '@/stores/EntriesStore';
 
 import {storeToRefs} from 'pinia'
+import CreateEntryButtonDesktop from '../components/CreateEntryButtonDesktop.vue';
 
 const modalClosed = ref(false);
 
@@ -38,7 +39,7 @@ const onSelectChange = () => {
 
 <template>
     <div class="wrapper">
-        <CreateEntryButton @openModal="modalClosed = true"/>
+        <CreateEntryButtonDesktop @openModal="modalClosed = true" :fromPhone="false" />
 
         <h1>Entries</h1>
         <section class="sortby-wrapper">
@@ -68,6 +69,8 @@ const onSelectChange = () => {
     </div>
     <CreateEntryModal v-if="modalClosed" @close="modalClosed = false" />
     <DeleteEntryModal v-if="deleteModalOpen" />
+    <CreateEntryButton @openModal="modalClosed = true"  />
+
 </template>
 
 <style scoped>
@@ -79,6 +82,7 @@ margin: 46px 37px;
 display: flex;
 flex-direction: column;
 min-height: 100vh;
+position: relative;
 }
 .wrapper h1{
     margin: 0;

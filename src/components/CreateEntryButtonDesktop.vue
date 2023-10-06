@@ -17,9 +17,7 @@ import { defineEmits } from 'vue';
 
 <style scoped>
 div{
-    border-top-right-radius: 40px;
-    border-top-left-radius: 40px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     /* border-top: 1px solid #212427; */
@@ -41,7 +39,13 @@ div img{
 
 @media (min-width: 1024px) {
     div{
-        display: none;
+        display: flex;
+
+        position: inherit;
+        min-width: 176px;
+        width: 176px;
+        align-self: flex-end;
+        border-radius: 40px;
     }
 }
 </style>
