@@ -6,7 +6,7 @@ import {storeToRefs} from 'pinia'
 
 
 const { modalClosed } = defineProps(['modalClosed']);
-const emit = defineEmits(['close']);
+// const emit = defineEmits(['close']);
 const modal = ref(null)
 const modalbody = ref(null)
 const store = useDeleteEntryStore()
@@ -67,6 +67,8 @@ entriesStore.deleteEntry()
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
+
 }
 section{
     background-color: rgb(255, 255, 255);

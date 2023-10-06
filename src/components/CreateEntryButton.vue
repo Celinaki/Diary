@@ -31,6 +31,7 @@ div{
     bottom: 0;
     box-shadow: 0px -1px 3px 0px rgba(22, 22, 22, 0.25);
     cursor: pointer;
+    z-index: 0;
 
 }
 div img{
