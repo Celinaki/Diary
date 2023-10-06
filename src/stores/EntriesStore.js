@@ -1,8 +1,11 @@
-import { defineStore } from 'pinia'
+import { defineStore , storeToRefs} from 'pinia'
 import { ref, computed } from 'vue'
+import { useDeleteEntryStore } from '@/stores/DeleteEntryStore';
 
 
 export const useEntriesStore = defineStore('entriesStore', () => {
+    const deleteStore = useDeleteEntryStore()
+    const { deleteEntryModal } = storeToRefs(deleteStore)
 
     let allEntries = ref([])
     //Initial value of array
@@ -56,6 +59,7 @@ export const useEntriesStore = defineStore('entriesStore', () => {
     let varId = ref(0)
     const changeDeleteState = () => {
         permDelete.value = true;
+        deleteEntryModal.value=false;
     }
 
     const getId = (id) => {
