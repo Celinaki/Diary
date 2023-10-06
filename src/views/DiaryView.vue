@@ -119,4 +119,11 @@ min-height: 100vh;
     }
 }
 
+@media (min-width: 1600px){
+    .entries-wrapper{
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+}
+
 </style>
