@@ -1,6 +1,13 @@
 # Diary
+Developed according to figma mockup: https://www.figma.com/file/H3ztQuKyBvgT3ciKIOAVKe/Untitled?type=design&node-id=0%3A1&mode=design&t=67QnRcY9QneLZClI-1 .
 
-This template should help get you started developing with Vue 3 in Vite.
+In this project, users have the ability to create new entries in their diary. The application offers several key features, including:
+
+1. Sorting Entries: Users can easily sort their diary entries based on date, either from newest to oldest or from oldest to newest.
+
+2. Pagination: The application presents diary entries in manageable chunks, displaying five entries at a time.
+
+3. Entry Deletion: Deleting diary entries is a straightforward process with the help of a confirmation dialog.
 
 ## Recommended IDE Setup
 
