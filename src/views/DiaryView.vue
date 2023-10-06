@@ -32,15 +32,11 @@ const onSelectChange = () => {
   entriesStore.sortEntries(selectedValue.value);
 }
 
-
-
-
 </script>
 
 <template>
     <div class="wrapper">
         <CreateEntryButtonDesktop @openModal="modalClosed = true" :fromPhone="false" />
-
         <h1>Entries</h1>
         <section class="sortby-wrapper">
             <h2>Sort by: </h2>
@@ -49,7 +45,6 @@ const onSelectChange = () => {
             @change="onSelectChange"
             id="sort-by">
             <option value="" disabled selected hidden>Date</option>
-
                 <option value="newest"
                 > Newest</option>
                 <option value="oldest" 
@@ -67,9 +62,9 @@ const onSelectChange = () => {
         </div>
         <Pagination/>
     </div>
-    <CreateEntryModal v-if="modalClosed" @close="modalClosed = false" />
+    <CreateEntryModal v-if="modalClosed" @close="((val)=>{modalClosed=val}) " />
     <DeleteEntryModal v-if="deleteModalOpen" />
-    <CreateEntryButton @openModal="modalClosed = true"  />
+    <CreateEntryButton @openModal="((val)=>{modalClosed=val})"  />
 
 </template>
 
