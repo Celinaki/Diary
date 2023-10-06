@@ -10,8 +10,8 @@ const modalbody = ref(null)
 
 const entriesStore = useEntriesStore()
 
-const newEntry = ref({})
-const newDate = ref('')
+// const newEntry = ref({})
+// const newDate = ref('')
 
 const entry = ref("");
 
@@ -56,7 +56,7 @@ const year = today.getFullYear();
 //Add current entry to store
 const sendToStore = ()=>{
     let randomId = Math.floor((Math.random() * 10000) + 1);
-    newEntry.value={
+    const newEntry ={
         id:randomId,
         date: formattedDate,
         entry:entry.value
