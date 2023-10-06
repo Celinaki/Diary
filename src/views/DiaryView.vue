@@ -105,5 +105,18 @@ min-height: 100vh;
     padding-top: 25px;
 }
 
+@media (min-width: 1024px) {
+    .wrapper{
+        width: 65%;
+        margin: auto;
+        margin-top: 46px;
+    }
+    .entries-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 36px;
+        row-gap: 30px;
+    }
+}
 
 </style>
