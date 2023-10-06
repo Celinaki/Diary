@@ -152,11 +152,26 @@ button{
     background: rgba(175, 241, 255, 0.90);
     display: inline-flex;
     padding: 6px 14px;
+    font-family: 'Quicksand';
     justify-content: center;
     align-items: center;
-    
+    font-size: 12px;
+    font-weight: 500;
+    transition: 300ms;  
+    cursor: pointer;
+}
+button:hover{
+    border: 1px solid #212427;
 }
 .not-filled-button{
     background:#fff;
+}
+
+@media (min-width: 1024px){
+    section{
+        width: 50%;
+        height: 60vh;
+        padding: 2rem 3rem;
+    }
 }
 </style>
