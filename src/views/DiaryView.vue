@@ -1,6 +1,6 @@
 <script setup>
 import EntryCard from '../components/icons/EntryCard.vue';
-import Pagination from '../components/icons/Pagination.vue'
+import Pagination from '../components//Pagination.vue'
 import CreateEntryButton from '../components/CreateEntryButton.vue'
 import CreateEntryModal from '../components/CreateEntryModal.vue'
 import DeleteEntryModal from '../components/DeleteEntryModal.vue'
@@ -20,7 +20,8 @@ const deleteModalOpen = ref(deleteEntryModal);
 
 //Entries store
 const entriesStore = useEntriesStore()
-const { allEntries } = storeToRefs(entriesStore)
+
+const { allEntries, currentEntries } = storeToRefs(entriesStore)
 // const {sortEntries} = storeToRefs(entriesStore)
 //Entries store
 
@@ -54,7 +55,7 @@ const onSelectChange = () => {
         </section>
 
         <div class="entries-wrapper">
-            <EntryCard v-for="entry in allEntries"
+            <EntryCard v-for="entry in currentEntries"
                    :entryDate="entry.date"
                    :entryText="entry.entry"
                    :entryId="entry.id"
@@ -76,6 +77,7 @@ template{
 margin: 46px 37px;
 display: flex;
 flex-direction: column;
+min-height: 100vh;
 }
 .wrapper h1{
     margin: 0;
