@@ -30,11 +30,22 @@ div{
     position: sticky;
     bottom: 0;
     box-shadow: 0px -1px 3px 0px rgba(22, 22, 22, 0.25);
+    cursor: pointer;
 
 }
 div img{
     width: 28px;
     height: 24px;
     padding-left: 4px;
+}
+
+@media (min-width: 1024px) {
+    div{
+        position: inherit;
+        min-width: 176px;
+        width: 176px;
+        align-self: flex-end;
+        border-radius: 40px;
+    }
 }
 </style>
