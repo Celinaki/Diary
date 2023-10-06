@@ -112,4 +112,25 @@ button{
     border: 1px solid black;
     color: black;
 }
+
+@media (min-width: 1024px){
+    section{
+        width: 20%;
+        height: 10%;
+    }
+    .first-row{
+        height: 50%;
+        align-items: center;
+    }
+    .first-row img{
+        height: 31px;
+    }
+    span{
+        height: 50%;
+    }
+    button{
+        align-self: center;
+        height: min-content;
+    }
+}
 </style>
