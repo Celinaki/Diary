@@ -38,6 +38,8 @@ const onSelectChange = () => {
 
 <template>
     <div class="wrapper">
+        <CreateEntryButton @openModal="modalClosed = true"/>
+
         <h1>Entries</h1>
         <section class="sortby-wrapper">
             <h2>Sort by: </h2>
@@ -64,7 +66,6 @@ const onSelectChange = () => {
         </div>
         <Pagination/>
     </div>
-    <CreateEntryButton @openModal="modalClosed = true"/>
     <CreateEntryModal v-if="modalClosed" @close="modalClosed = false" />
     <DeleteEntryModal v-if="deleteModalOpen" />
 </template>
