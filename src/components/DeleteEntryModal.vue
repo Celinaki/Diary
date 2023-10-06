@@ -105,6 +105,7 @@ button{
     color: white;
     font-size: 12px;
     font-weight: 700;
+    cursor: pointer;
     
 }
 .not-filled-button{
