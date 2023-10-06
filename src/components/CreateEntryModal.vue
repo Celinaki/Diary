@@ -102,6 +102,7 @@ div{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 section{
     background-color: rgb(255, 255, 255);
