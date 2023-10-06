@@ -26,6 +26,7 @@ div{
     width: 100%;
     justify-content: space-between;
     padding-bottom: 26px;
+    margin-top: auto;
 
 }
 span{
