@@ -34,4 +34,9 @@ span{
     padding: 4px 8px;
     background-color: rgb(255, 255, 255);
 }
+@media (min-width: 1024px){
+    span{
+        padding: 8px 16px;
+    }
+}
 </style>
