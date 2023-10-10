@@ -1,8 +1,12 @@
 <script setup>
+import {storeToRefs} from 'pinia'
 import { useEntriesStore } from '@/stores/EntriesStore';
-
+import {ref, onMounted} from 'vue'
 
 let store = useEntriesStore();
+const {  numberOfPages} = storeToRefs(store)
+const totalPages = ref(numberOfPages)
+
 
 </script>
 
@@ -16,6 +20,9 @@ let store = useEntriesStore();
         <span>3</span>
         <span>4</span>
         <span>5</span> -->
+
+    
+        <span v-for="(n , index) in totalPages"> {{ n }}</span>
         <span @click="store.handlePage(1)">></span>
     </div>
 </template>

@@ -25,7 +25,8 @@ export const useEntriesStore = defineStore('entriesStore', () => {
         return allEntries.value.slice(((page.value - 1) * 5), (page.value * 5));
     })
     const handlePage = (num) => {
-        const totalPages = Math.ceil(allEntries.value.length / 5);
+        // const totalPages = Math.ceil(allEntries.value.length / 5);
+
 
         if (page.value + num <= 0) {
             return;
@@ -38,6 +39,11 @@ export const useEntriesStore = defineStore('entriesStore', () => {
              page.value += num;
         
     }
+    const totalOfPages = ref(0)
+    const numberOfPages = computed(()=>{
+        return Math.ceil(allEntries.value.length / 5) + 1;
+
+    })
     //Pagination
 
 
@@ -120,7 +126,9 @@ export const useEntriesStore = defineStore('entriesStore', () => {
         addNewEntry,
         deleteEntry,
         getId,
-        changeDeleteState
+        changeDeleteState,
+        numberOfPages,
+        // totalOfPages
     }
 
 })
