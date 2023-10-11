@@ -22,7 +22,7 @@ const totalPages = ref(numberOfPages)
         <span>5</span> -->
 
     
-        <span v-for="(n , index) in totalPages-1"
+        <span v-for="(n , index) in totalPages"
         @click="store.goToPage(n)"> {{ n }}</span>
         <span @click="store.handlePage(1)">></span>
     </div>
