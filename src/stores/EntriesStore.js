@@ -39,6 +39,9 @@ export const useEntriesStore = defineStore('entriesStore', () => {
              page.value += num;
         
     }
+    const goToPage = (num) =>{
+        page.value=num
+    }
     const totalOfPages = ref(0)
     const numberOfPages = computed(()=>{
         return Math.ceil(allEntries.value.length / 5) + 1;
@@ -128,6 +131,7 @@ export const useEntriesStore = defineStore('entriesStore', () => {
         getId,
         changeDeleteState,
         numberOfPages,
+        goToPage
         // totalOfPages
     }
 
