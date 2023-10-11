@@ -44,7 +44,7 @@ export const useEntriesStore = defineStore('entriesStore', () => {
     }
     const totalOfPages = ref(0)
     const numberOfPages = computed(()=>{
-        return Math.ceil(allEntries.value.length / 5) + 1;
+        return Math.ceil(allEntries.value.length / 5) ;
 
     })
     //Pagination
